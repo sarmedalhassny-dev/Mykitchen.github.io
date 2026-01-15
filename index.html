@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مطبخي - مطبخ ذكي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Changa:wght@400;600;800&family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="hero">
+      <div class="hero__top">
+        <div class="logo">
+          <span>مطبخي</span>
+          <small>مطبخ ذكي للمنزل</small>
+        </div>
+        <div class="hero__date" id="todayDate"></div>
+        <div class="account-actions">
+          <a id="headerLogin" class="btn ghost" href="#account">تسجيل الدخول</a>
+          <button id="headerLogout" class="btn ghost" type="button" hidden>
+            تسجيل خروج
+          </button>
+        </div>
+      </div>
+      <div class="hero__content">
+        <h1>رتّبي مطبخكِ بذكاء، وارسلي الطلب للزوج بصورة جاهزة.</h1>
+        <p>
+          اختاري المواد، حددي الكميات، راقبي ما هو متوفر في الثلاجة، ودعِي الشيف
+          الذكي يقترح لكِ الأطباق الممكنة.
+        </p>
+        <div class="hero__actions">
+          <a class="btn primary" href="#shop">ابدئي الطلب</a>
+          <a class="btn ghost" href="#chef">اقتراحات الطبخ</a>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div class="stat">
+          <strong id="cartCount">0</strong>
+          <span>عنصر بالسلة</span>
+        </div>
+        <div class="stat">
+          <strong id="fridgeCount">0</strong>
+          <span>متوفر بالثلاجة</span>
+        </div>
+        <div class="stat">
+          <strong id="readyDishCount">0</strong>
+          <span>أطباق جاهزة</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="account" class="panel">
+        <div class="section-header">
+          <div>
+            <h2>حسابي</h2>
+            <p>سجّل دخولك باسمك ورقم هاتفك لحفظ مخزونك بشكل منفصل.</p>
+          </div>
+          <div class="section-actions">
+            <span class="pill">حسابات متعددة</span>
+          </div>
+        </div>
+        <div class="account-grid">
+          <form id="loginForm" class="account-form">
+            <input
+              id="userName"
+              type="text"
+              placeholder="الاسم الكامل"
+              autocomplete="name"
+              required
+            />
+            <input
+              id="userPhone"
+              type="tel"
+              placeholder="رقم الهاتف"
+              autocomplete="tel"
+              required
+            />
+            <button id="loginButton" class="btn primary" type="submit">
+              تسجيل الدخول
+            </button>
+          </form>
+          <div class="account-card">
+            <h3>الملف الحالي</h3>
+            <div class="account-row">
+              <span>الاسم</span>
+              <strong id="currentUserName">—</strong>
+            </div>
+            <div class="account-row">
+              <span>الهاتف</span>
+              <strong id="currentUserPhone">—</strong>
+            </div>
+            <div class="account-row">
+              <span id="currentUserRole">غير مسجل</span>
+            </div>
+            <p id="accountStatus" class="account-note"></p>
+            <button id="logoutButton" class="btn ghost" type="button" hidden>
+              تسجيل الخروج
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="adminPanel" class="panel" hidden>
+        <div class="section-header">
+          <div>
+            <h2>لوحة الادمن</h2>
+            <p>إحصائيات المستخدمين والزوار على هذا الجهاز.</p>
+          </div>
+          <div class="section-actions">
+            <span class="pill">خاص بالادمن</span>
+          </div>
+        </div>
+        <div class="admin-grid">
+          <div class="admin-stats">
+            <div class="admin-stat">
+              <strong id="adminUserCount">0</strong>
+              <span>عدد المشتركين</span>
+            </div>
+            <div class="admin-stat">
+              <strong id="adminVisitCount">0</strong>
+              <span>عدد الزيارات</span>
+            </div>
+          </div>
+          <div class="admin-users">
+            <h3>قائمة المستخدمين</h3>
+            <div id="adminUsersList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="shop" class="panel">
+        <div class="section-header">
+          <div>
+            <h2>مواد المطبخ المطلوبة</h2>
+            <p>اختاري الكمية المطلوبة لكل مادة، تُضاف مباشرةً إلى السلة.</p>
+          </div>
+        <div class="section-actions">
+          <span class="pill">صور + أسعار + محل الشراء</span>
+        </div>
+      </div>
+      <div class="product-controls">
+        <div class="search-box">
+          <input
+            id="productSearch"
+            type="search"
+            placeholder="بحث سريع عن مادة أو محل"
+          />
+        </div>
+        <div id="productStats" class="product-stats">عرض 1 - 40 من 200</div>
+      </div>
+      <div id="productGrid" class="grid"></div>
+      <div id="productPagination" class="pagination"></div>
+    </section>
+
+      <section id="fridge" class="panel">
+        <div class="section-header">
+          <div>
+            <h2>مخزون الثلاجة</h2>
+            <p>حددي ما هو متوفر في الثلاجة وما ينقصكِ.</p>
+          </div>
+          <div class="section-actions">
+            <button id="addMissingToCart" class="btn accent">
+              أضف الناقص للسلة
+            </button>
+          </div>
+        </div>
+        <div class="product-controls">
+          <div class="search-box">
+            <input
+              id="fridgeSearch"
+              type="search"
+              placeholder="بحث سريع في مخزون الثلاجة"
+            />
+          </div>
+          <div id="fridgeStats" class="product-stats">عرض 1 - 40 من 200</div>
+        </div>
+        <div id="fridgeList" class="fridge-list"></div>
+        <div id="fridgePagination" class="pagination"></div>
+      </section>
+
+      <section id="chef" class="panel">
+        <div class="section-header">
+          <div>
+            <h2>الشيف الذكي</h2>
+            <p>
+              حددي المكونات المتوفرة لتحصلي على أطباق مناسبة، مع تنبيه النقص عند
+              الحاجة.
+            </p>
+          </div>
+          <div class="section-actions">
+            <span class="pill">ذكاء مطبخي سريع</span>
+          </div>
+        </div>
+        <div class="chef-grid">
+          <div class="ingredients-panel">
+            <h3>المكونات المتوفرة من الثلاجة</h3>
+            <p class="chef-note">
+              يعتمد الشيف الذكي على مخزون الثلاجة، عدّلي المخزون ليتم تحديث
+              الاقتراحات تلقائيًا. اضغطي على أي طبق لفتح التفاصيل والفيديو هنا.
+            </p>
+            <div id="fridgeIngredients" class="ingredient-list"></div>
+          </div>
+          <div class="dishes-panel">
+            <h3>الأطباق الذكية المقترحة</h3>
+            <div id="dishResults" class="dish-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cart" class="panel">
+        <div class="section-header">
+          <div>
+            <h2>السلة والفاتورة</h2>
+            <p>
+              راجعي الطلب، ثم صدّري الفاتورة كصورة جاهزة لإرسالها للزوج.
+            </p>
+          </div>
+          <div class="section-actions">
+            <span class="pill">تصدير سريع</span>
+          </div>
+        </div>
+        <div class="cart-layout">
+          <div>
+            <div id="cartItems" class="cart-items"></div>
+          </div>
+          <div class="invoice-panel">
+            <div id="invoiceSummary" class="invoice-summary"></div>
+            <button id="exportInvoice" class="btn primary">
+              تصدير الفاتورة كصورة
+            </button>
+            <a
+              id="downloadInvoice"
+              class="btn ghost hidden"
+              download="invoice.png"
+              href="#"
+            >
+              تحميل الصورة
+            </a>
+            <p class="invoice-note">
+              يتم حفظ الفاتورة كصورة PNG جاهزة للمشاركة عبر واتساب.
+            </p>
+            <div class="invoice-preview">
+              <img id="invoicePreview" alt="معاينة الفاتورة" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="dishModal" class="dish-modal" role="dialog" aria-modal="true" aria-labelledby="dishModalTitle" aria-hidden="true">
+      <div class="dish-modal__content" role="document">
+        <div class="dish-modal__header">
+          <h3 id="dishModalTitle">تفاصيل الطبق</h3>
+          <button id="dishModalClose" class="btn ghost" type="button">
+            اغلاق
+          </button>
+        </div>
+        <div id="dishModalBody"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

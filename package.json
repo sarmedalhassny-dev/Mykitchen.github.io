@@ -1,0 +1,10 @@
+{
+  "name": "matbakhi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for Matbakhi",
+  "scripts": {
+    "build": "echo \"no build step\"",
+    "test": "echo \"no tests\""
+  }
+}

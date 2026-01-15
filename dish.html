@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مطبخي - تفاصيل الطبق</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Changa:wght@400;600;800&family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="detail-page">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="detail-hero">
+      <div class="detail-top">
+        <a class="btn ghost" href="index.html#chef">العودة إلى مطبخي</a>
+        <span class="pill">تفاصيل الطبق</span>
+      </div>
+      <div class="detail-title">
+        <h1 id="dishName">تفاصيل الطبق</h1>
+        <div id="dishTags" class="detail-tags"></div>
+      </div>
+      <p id="dishSummary" class="detail-summary-text"></p>
+    </header>
+
+    <main class="container">
+      <section class="panel detail-grid" data-dish-section>
+        <div class="detail-media">
+          <img id="dishImage" alt="صورة الطبق" />
+          <div id="dishStatus" class="detail-status"></div>
+        </div>
+        <div class="detail-info">
+          <h2>ملخص الطبق</h2>
+          <p id="dishMetaSummary" class="detail-summary-text"></p>
+          <div id="dishMeta" class="detail-meta"></div>
+        </div>
+      </section>
+
+      <section class="panel" data-dish-section>
+        <div class="section-header">
+          <div>
+            <h2>المكونات والكميات</h2>
+            <p>قائمة المكونات المطلوبة مع الكميات الدقيقة لكل طبق.</p>
+          </div>
+        </div>
+        <div id="dishIngredients" class="detail-ingredients"></div>
+        <div id="missingIngredients" class="detail-missing"></div>
+      </section>
+
+      <section class="panel" data-dish-section>
+        <div class="section-header">
+          <div>
+            <h2>طريقة التحضير</h2>
+            <p>خطوات مبسطة لتحضير الطبق خطوة بخطوة.</p>
+          </div>
+        </div>
+        <ol id="dishSteps" class="detail-steps"></ol>
+      </section>
+
+      <section class="panel" data-dish-section>
+        <div class="section-header">
+          <div>
+            <h2>فيديو التحضير</h2>
+            <p>فيديو يوتيوب يوضح طريقة التحضير بشكل عملي.</p>
+          </div>
+        </div>
+        <a
+          id="dishVideoLink"
+          class="dish-video-link"
+          target="_blank"
+          rel="noopener"
+        >
+          مشاهدة فيديو الوصفة
+        </a>
+        <iframe
+          id="dishVideo"
+          class="dish-video"
+          title="فيديو الطبق"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </section>
+
+      <section class="panel" id="dishNotFound" hidden>
+        <h2>الطبق غير متوفر</h2>
+        <p>
+          لم يتم العثور على تفاصيل الطبق. افتحي الطبق من صفحة مطبخي لتحديث
+          البيانات.
+        </p>
+      </section>
+    </main>
+
+    <script src="dish.js"></script>
+  </body>
+</html>
